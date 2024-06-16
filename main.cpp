@@ -35,3 +35,41 @@ TEST_CASE("Test method Clear()", "[clear]") {
     list.Clear();
     REQUIRE(list.Empty() == true);
 }
+
+TEST_CASE("Test method PushBack()", "[pushback]") {
+    INFO("Method PushBack() is not correct");
+    List list;
+    list.PushBack(10);
+    list.PushBack(500);
+    REQUIRE(list.PopBack() == 500);
+}
+
+
+TEST_CASE("Test method PushFront()", "[pushfront]") {
+    INFO("Method PushFront() is not correct");
+    List list;
+    list.PushFront(-10);
+    list.PushBack(500);
+    list.PushFront(1000);
+    REQUIRE(list.PopFront() == 1000);
+}
+
+TEST_CASE("Test method PopBack()", "[popback]") {
+    INFO("Method PopBack() is not correct");
+    List list;
+    CHECK_THROWS(list.PopBack());
+    list.PushFront(-10);
+    list.PushBack(500);
+    list.PushFront(1000);
+    CHECK(list.PopBack() == 500);
+}
+
+TEST_CASE("Test method PopFront()", "[popfront]") {
+    INFO("Method PopFront() is not correct");
+    List list;
+    CHECK_THROWS(list.PopFront());
+    list.PushFront(-10);
+    list.PushBack(500);
+    list.PushFront(1000);
+    CHECK(list.PopFront() == 1000);
+}
